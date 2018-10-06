@@ -4,7 +4,7 @@
 ##### Want to learn about Android Clean Code ? follow [here][7]
 
 
-![Image of CleanCode] (https://github.com/kmmraj/KotlinCleanCode4Android/kotlinCleanCode.png)
+ ![Image of CleanCode] (https://github.com/kmmraj/KotlinCleanCode4Android/blob/master/doc/images/kotlinCleanCode.png)
 
 
 ## Quick Start
