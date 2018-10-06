@@ -4,6 +4,9 @@
 ##### Want to learn about Android Clean Code ? follow [here][7]
 
 
+![Image of CleanCode] (https://github.com/kmmraj/KotlinCleanCode4Android/kotlinCleanCode.png)
+
+
 ## Quick Start
 1. Clone and open in Android Studio
 2. It should work with out any issues
