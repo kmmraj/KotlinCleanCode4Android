@@ -46,7 +46,7 @@ class HomeActivity : AppCompatActivity(), HomeActivityInput {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        supportActionBar!!.hide()
+        supportActionBar?.hide()
 
         HomeConfigurator.configure(this)
         fetchMetaData()
