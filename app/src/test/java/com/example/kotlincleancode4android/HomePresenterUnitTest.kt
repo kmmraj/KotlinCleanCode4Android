@@ -83,7 +83,6 @@ class HomePresenterUnitTest {
         val expectedText = "You have " + "184" + " days to fly"
         val actualText = homeActivityInputSpy.homeViewModelCopy.listOfFlights?.get(0)?.noOfDaysToFly
         Assert.assertEquals("When current date is 2016/10/12 & Flying Date is 2016/10/31 Then no of days should be 19", expectedText, actualText)
-
     }
 
     @Test
@@ -105,28 +104,24 @@ class HomePresenterUnitTest {
 
         flightsList.add(flight1)
 
-
         homeResponse.listOfFlights = flightsList
 
         val homeActivityInputSpy = HomeActivityInputSpy()
         homePresenter.output = WeakReference<HomeActivityInput>(homeActivityInputSpy)
 
-
         // When
         val currentTime = Calendar.getInstance()
-        //currentTime.set(2017,5,30,0,0,0);
+        // currentTime.set(2017,5,30,0,0,0);
         currentTime.set(2017, 5, 30)
         Log.e(TAG, "verify_HomePresenter_getDaysDiff_isCalculatedCorrectly_ForPastTrips: " + currentTime.toString())
         homePresenter.currentTime = currentTime
         homePresenter.presentHomeMetaData(homeResponse)
-
 
         // Then
         // "It has been " + daysDiff + " days since you flew";
         val expectedText = "It has been " + 272 + " days since you flew"
         val actualText = homeActivityInputSpy.homeViewModelCopy.listOfFlights?.get(0)?.noOfDaysToFly
         Assert.assertEquals("When current date is 2017/05/30 & Flying Date is 2016/10/01 Then no of days should be 271", expectedText, actualText)
-
     }
 
     private inner class HomeActivityInputSpy : HomeActivityInput {
