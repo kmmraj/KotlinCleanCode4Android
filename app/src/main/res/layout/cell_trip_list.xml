@@ -15,6 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="4dp"
         android:contentDescription="@string/flight_name"
         android:text="@string/flight_name"
@@ -48,13 +49,13 @@
         app:srcCompat="@android:drawable/ic_menu_info_details"
         android:clickable="false"
         android:focusable="false"
-        android:focusableInTouchMode="false"/>
+        android:focusableInTouchMode="false"
+        android:contentDescription="@string/flight_image"/>
 
     <TextView
         android:id="@+id/tv_flightTimeDescription"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:inputType="textMultiLine"
         android:singleLine="false"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="8dp"

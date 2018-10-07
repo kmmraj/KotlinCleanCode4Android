@@ -19,7 +19,7 @@ import com.example.kotlincleancode4android.R
 import java.util.ArrayList
 
 
- interface HomeActivityInput {
+interface HomeActivityInput {
     fun displayHomeMetaData(viewModel: HomeViewModel)
 }
 
@@ -28,14 +28,11 @@ import java.util.ArrayList
 //     HomeRouter router = null;
 //}
 
-
 class HomeActivity : AppCompatActivity(), HomeActivityInput {
 
     lateinit var listOfVMFlights: ArrayList<FlightViewModel>
     lateinit var output: HomeInteractorInput
     lateinit var router: HomeRouter
-
-
 
 //    var output: HomeInteractorInput? = null
 //        set(value) {
@@ -45,7 +42,6 @@ class HomeActivity : AppCompatActivity(), HomeActivityInput {
 //        set(value) {
 //        if (field == null) field = value
 //    }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -77,7 +73,6 @@ class HomeActivity : AppCompatActivity(), HomeActivityInput {
         listOfVMFlights = viewModel.listOfFlights!!
     }
 
-
     private inner class FlightListAdapter() : BaseAdapter() {
 
         private val layoutInflater: LayoutInflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
@@ -99,7 +94,7 @@ class HomeActivity : AppCompatActivity(), HomeActivityInput {
 
             if (view == null) {
                 view = layoutInflater.inflate(R.layout.cell_trip_list, null)
-                view?.let{
+                view?.let {
                     val viewHolder = ViewHolder()
                     viewHolder.flightNameTextView = view.findViewById(R.id.tv_flightNumberValue) as TextView
                     viewHolder.startTimeTextView = view.findViewById(R.id.tv_flightTimeDescription) as TextView

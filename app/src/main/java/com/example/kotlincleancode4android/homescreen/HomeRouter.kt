@@ -5,7 +5,7 @@ import android.view.View
 import android.widget.AdapterView
 import com.example.kotlincleancode4android.CalendarUtil
 import java.lang.ref.WeakReference
-import java.util.*
+import java.util.Calendar
 
 /**
  * Created by Mohanraj Karatadipalayam on 06/10/18.
@@ -23,7 +23,7 @@ class HomeRouter : HomeRouterInput, AdapterView.OnItemClickListener {
 
 
     override fun determineNextScreen(position: Int): Intent {
-        //Based on the position or someother data decide what is the next scene
+        // Based on the position or someother data decide what is the next scene
 
         val flight = activity?.get()?.listOfVMFlights?.get(position)
         val startingTime = CalendarUtil.getCalendar(flight?.startingTime)
@@ -37,7 +37,7 @@ class HomeRouter : HomeRouterInput, AdapterView.OnItemClickListener {
     }
 
     override fun passDataToNextScene(position: Int, intent: Intent) {
-        //Based on the position or someother data decide the data for the next scene
+        // Based on the position or someother data decide the data for the next scene
         val flight = activity?.get()?.listOfVMFlights?.get(position)
         intent.putExtra("flight", flight)
     }
@@ -59,8 +59,6 @@ class HomeRouter : HomeRouterInput, AdapterView.OnItemClickListener {
     }
 
     companion object {
-
-        var TAG = HomeRouter::class.java.simpleName
+        const val TAG = "HomeRouter"
     }
-
 }

@@ -1,6 +1,6 @@
 package com.example.kotlincleancode4android
 
-import java.util.*
+import java.util.Calendar
 import java.util.concurrent.TimeUnit
 
 /**
@@ -12,7 +12,7 @@ class ArrayEmptyException(var msg: String? =  "ArrayEmptyException") : RuntimeEx
 object CalendarUtil {
 
     fun getCalendar(date: String?): Calendar {
-        //Date should be in the format YYYY/MM/DD if not return
+        // Date should be in the format YYYY/MM/DD if not return
         if (date != null && !date.isEmpty() && date.length == 10) {
             val year = Integer.parseInt(date.substring(0, 4))
             val month = Integer.parseInt(date.substring(5, 7))
@@ -35,4 +35,3 @@ object CalendarUtil {
         return TimeUnit.MILLISECONDS.toDays(msDiff)
     }
 }
-

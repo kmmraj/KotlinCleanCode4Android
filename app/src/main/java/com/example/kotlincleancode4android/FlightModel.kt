@@ -19,13 +19,14 @@ fun <T : Parcelable> Parcel.readParcelable(creator: Parcelable.Creator<T>): T? {
     if (readString() != null) return creator.createFromParcel(this) else return null
 }
 
-open class FlightModel(var flightName: String,
-                  var startingTime: String,
-                  var departureCity: String,
-                  var arrivalCity: String,
-                  var departureTime: String,
-                  var arrivalTime: String) : Parcelable {
-
+open class FlightModel(
+        var flightName: String,
+        var startingTime: String,
+        var departureCity: String,
+        var arrivalCity: String,
+        var departureTime: String,
+        var arrivalTime: String
+    ): Parcelable {
 
     constructor(parcelIn: Parcel) : this(
             flightName = parcelIn.readString(),
@@ -33,7 +34,8 @@ open class FlightModel(var flightName: String,
             departureCity = parcelIn.readString(),
             arrivalCity = parcelIn.readString(),
             departureTime = parcelIn.readString(),
-            arrivalTime = parcelIn.readString())
+            arrivalTime = parcelIn.readString()
+    )
 
 
 
@@ -57,28 +59,32 @@ open class FlightModel(var flightName: String,
 }
 
 
-class FlightViewModel(var noOfDaysToFly: String?,
-                      flightName: String,
-                      startingTime: String,
-                      departureCity: String,
-                      arrivalCity: String,
-                      departureTime: String,
-                      arrivalTime: String):
-        FlightModel(flightName,
-                startingTime,
-                departureCity,
-                arrivalCity,
-                departureTime,
-                arrivalTime) {
+class FlightViewModel(
+        var noOfDaysToFly: String?,
+        flightName: String,
+        startingTime: String,
+        departureCity: String,
+        arrivalCity: String,
+        departureTime: String,
+        arrivalTime: String
+    ): FlightModel(
+        flightName,
+        startingTime,
+        departureCity,
+        arrivalCity,
+        departureTime,
+        arrivalTime
+    ) {
 
-
-    constructor(parcelIn: Parcel): this(noOfDaysToFly = parcelIn.readString(),
+    constructor(parcelIn: Parcel): this(
+            noOfDaysToFly = parcelIn.readString(),
             flightName = parcelIn.readString(),
             startingTime = parcelIn.readString(),
             departureCity = parcelIn.readString(),
             arrivalCity = parcelIn.readString(),
             departureTime = parcelIn.readString(),
-            arrivalTime = parcelIn.readString())
+            arrivalTime = parcelIn.readString()
+    )
 
 
     override fun describeContents(): Int {

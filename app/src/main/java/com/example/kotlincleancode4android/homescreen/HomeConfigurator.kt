@@ -31,5 +31,4 @@ object HomeConfigurator {
 //            activity.router = router
 //        }
     }
-
 }

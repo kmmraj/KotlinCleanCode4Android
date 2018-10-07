@@ -3,7 +3,7 @@ package com.example.kotlincleancode4android.homescreen
 import android.util.Log
 import com.example.kotlincleancode4android.FlightViewModel
 import java.lang.ref.WeakReference
-import java.util.*
+import java.util.Calendar
 import java.util.concurrent.TimeUnit
 
 /**
@@ -21,10 +21,9 @@ class HomePresenter : HomePresenterInput {
 
     override fun presentHomeMetaData(response: HomeResponse) {
         // Log.e(TAG, "presentHomeMetaData() called with: response = [" + response + "]");
-        //Do your decoration or filtering here
+        // Do your decoration or filtering here
         val homeViewModel = HomeViewModel()
         homeViewModel.listOfFlights = ArrayList()
-
 
         if (response.listOfFlights != null) {
 
@@ -37,7 +36,7 @@ class HomePresenter : HomePresenterInput {
                         departureTime = fm.departureTime,
                         arrivalTime = fm.arrivalTime)
 
-                //Decoration
+                // Decoration
                 val startingTime = getCalendar(fvm.startingTime)
                 startingTime?.let {
                     val startTime = it
@@ -46,12 +45,8 @@ class HomePresenter : HomePresenterInput {
                     setDaysFlyDecorationText(fvm, daysDiff, it.timeInMillis, startTime.timeInMillis)
                     }
                 }
-
-
                 homeViewModel.listOfFlights?.add(fvm)
             }
-
-
             output?.get()?.displayHomeMetaData(homeViewModel)
         }
     }
@@ -60,13 +55,13 @@ class HomePresenter : HomePresenterInput {
         if (endTime > startTime) {
             fvm.noOfDaysToFly = "You have $daysDiff days to fly"
         } else {
-            //daysDiff =-daysDiff;
+            // daysDiff =-daysDiff;
             fvm.noOfDaysToFly = "It has been $daysDiff days since you flew"
         }
     }
 
     private fun getCalendar(date: String?): Calendar? {
-        //Date should be in the format YYYY/MM/DD if not return
+        // Date should be in the format YYYY/MM/DD if not return
         if (date != null && !date.isEmpty() && date.length == 10) {
             val year = Integer.parseInt(date.substring(0, 4))
             val month = Integer.parseInt(date.substring(5, 7))
@@ -91,7 +86,6 @@ class HomePresenter : HomePresenterInput {
     }
 
     companion object {
-
         const val TAG = "HomePresenter"
     }
 }

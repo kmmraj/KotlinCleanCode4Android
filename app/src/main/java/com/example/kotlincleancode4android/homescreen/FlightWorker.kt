@@ -78,5 +78,4 @@ class FlightWorker : FlightWorkerInput {
 
             return flightsList
         }
-
 }

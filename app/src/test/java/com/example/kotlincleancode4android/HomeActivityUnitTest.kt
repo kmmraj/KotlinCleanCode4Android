@@ -27,9 +27,9 @@ class HomeActivityUnitTest {
 
     @Test
     fun HomeActivity_ShouldNOT_be_Null() {
-        //Given
-        val activity = Robolectric.setupActivity(HomeActivity::class.java!!)
-        //When
+        // Given
+        val activity = Robolectric.setupActivity(HomeActivity::class.java)
+        // When
 
         // Then
         Assert.assertNotNull(activity)
@@ -37,31 +37,31 @@ class HomeActivityUnitTest {
 
     @Test
     fun onCreate_shouldCall_fetchHomeMetaData() {
-        //Given
+        // Given
         val homeActivityOutputSpy = HomeActivityOutputSpy()
         val homeActivity = Robolectric.setupActivity(HomeActivity::class.java)
         // It must have called the onCreate earlier,
         // we are injecting the mock and calling the fetchMetaData to test our condition
         homeActivity.output = homeActivityOutputSpy
 
-        //When
+        // When
         homeActivity.fetchMetaData()
 
-        //Then
+        // Then
         Assert.assertTrue(homeActivityOutputSpy.fetchHomeMetaDataIsCalled)
     }
 
     @Test
     fun onCreate_Calls_fetchHomeMetaData_withCorrectData() {
-        //Given
+        // Given
         val homeActivityOutputSpy = HomeActivityOutputSpy()
-        val homeActivity = Robolectric.setupActivity(HomeActivity::class.java!!)
+        val homeActivity = Robolectric.setupActivity(HomeActivity::class.java)
         homeActivity.output = homeActivityOutputSpy
 
-        //When
+        // When
         homeActivity.fetchMetaData()
 
-        //Then
+        // Then
         Assert.assertNotNull(homeActivity)
         Assert.assertTrue(homeActivityOutputSpy.homeRequestCopy.isFutureTrips)
     }
@@ -76,6 +76,4 @@ class HomeActivityUnitTest {
             homeRequestCopy = request
         }
     }
-
-
 }

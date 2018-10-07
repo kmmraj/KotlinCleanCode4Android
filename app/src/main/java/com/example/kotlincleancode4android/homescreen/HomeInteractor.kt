@@ -44,7 +44,6 @@ class HomeInteractor : HomeInteractorInput {
     }
 
     companion object {
-
         const val TAG = "HomeInteractor"
     }
 }
