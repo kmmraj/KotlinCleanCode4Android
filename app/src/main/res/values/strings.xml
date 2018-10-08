@@ -30,4 +30,9 @@
     <string name="pnr_value">Z1Y2X3</string>
     <string name="flight_image">Flight Image</string>
     <string name="image">Image</string>
+    <string name="image_departure_city">Image Departure City</string>
+    <string name="image_arrival_city">Image Arrival City</string>
+    <string name="image_email_button">Image Email Button</string>
+    <string name="image_take_off">Image Take Off</string>
+    <string name="image_plane_landing">Image Plane Landing</string>
 </resources>

@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <item name="listOfFlights" type="id"/>
+    <item name="startingTime" type="id"/>
+    <item name="flightName" type="id"/>
+    <item name="checkInStatus" type="id"/>
+    <item name="gate" type="id"/>
+    <item name="terminal" type="id"/>
 </resources>

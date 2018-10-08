@@ -15,7 +15,6 @@ import java.util.*
 @RunWith(RobolectricTestRunner::class)
 class HomePresenterUnitTest {
 
-
     @Test
     fun presentHomeMetaData_with_validInput_shouldCall_displayHomeMetaData() {
         // Given

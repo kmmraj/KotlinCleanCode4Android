@@ -26,7 +26,9 @@
         <!-- <activity android:name=".detailScreen.FlightDetailActivity"/> -->
         <!-- <activity android:name=".pastTripScreen.PastTripActivity"/> -->
 
-        <activity android:name=".boardingScreen.BoardingActivity"></activity>
+        <activity android:name=".boardingScreen.BoardingActivity" />
+        <activity android:name=".detailScreen.FlightDetailActivity" />
+        <activity android:name=".pastTripScreen.PastTripActivity"></activity>
     </application>
 
 </manifest>

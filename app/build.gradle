@@ -30,6 +30,10 @@ android {
     configurations {
         ktlint
     }
+
+    defaultConfig {
+        vectorDrawables.useSupportLibrary = true
+    }
 }
 
 dependencies {

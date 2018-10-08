@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.AdapterView
 import com.example.kotlincleancode4android.CalendarUtil
 import com.example.kotlincleancode4android.boardingScreen.BoardingActivity
+import com.example.kotlincleancode4android.pastTripScreen.PastTripActivity
 import java.lang.ref.WeakReference
 import java.util.Calendar
 
@@ -32,11 +33,8 @@ class HomeRouter : HomeRouterInput, AdapterView.OnItemClickListener {
         return if (isFutureFlight(startingTime)) {
             Intent(activity!!.get(), BoardingActivity::class.java)
         } else {
-            Intent()
+            Intent(activity!!.get(), PastTripActivity::class.java)
         }
-//            Intent(activity!!.get(), PastTripActivity::class.java)
-//        }
-//        return Intent()
     }
 
     override fun passDataToNextScene(position: Int, intent: Intent) {

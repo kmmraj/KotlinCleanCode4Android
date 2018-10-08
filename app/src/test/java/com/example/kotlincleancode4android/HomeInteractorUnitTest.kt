@@ -69,7 +69,6 @@ class HomeInteractorUnitTest {
                 flightWorkerInputSpy.isGetPastFlightsMethodCalled)
     }
 
-
     @Test(expected = ArrayEmptyException::class)
     fun fetchHomeMetaData_fetchingNull_shouldThrowArrayEmptyException() {
         // Given

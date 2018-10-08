@@ -60,7 +60,7 @@ open class FlightModel(
 
 
 class FlightViewModel(
-        var noOfDaysToFly: String?,
+        var noOfDaysToFly: String? = null,
         flightName: String,
         startingTime: String,
         departureCity: String,

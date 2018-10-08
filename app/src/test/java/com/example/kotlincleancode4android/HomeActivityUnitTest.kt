@@ -3,9 +3,7 @@ package com.example.kotlincleancode4android
 import com.example.kotlincleancode4android.homescreen.HomeActivity
 import com.example.kotlincleancode4android.homescreen.HomeInteractorInput
 import com.example.kotlincleancode4android.homescreen.HomeRequest
-import org.junit.After
 import org.junit.Assert
-import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.Robolectric
@@ -16,14 +14,6 @@ import org.robolectric.RobolectricTestRunner
  */
 @RunWith(RobolectricTestRunner::class)
 class HomeActivityUnitTest {
-    @Before
-    fun setUp() {
-    }
-
-    @After
-    fun tearDown() {
-    }
-
 
     @Test
     fun HomeActivity_ShouldNOT_be_Null() {
@@ -66,11 +56,11 @@ class HomeActivityUnitTest {
         Assert.assertTrue(homeActivityOutputSpy.homeRequestCopy.isFutureTrips)
     }
 
-
     private inner class HomeActivityOutputSpy : HomeInteractorInput {
 
-         var fetchHomeMetaDataIsCalled = false
-         lateinit var homeRequestCopy: HomeRequest
+        var fetchHomeMetaDataIsCalled = false
+        lateinit var homeRequestCopy: HomeRequest
+
         override fun fetchHomeMetaData(request: HomeRequest) {
             fetchHomeMetaDataIsCalled = true
             homeRequestCopy = request
