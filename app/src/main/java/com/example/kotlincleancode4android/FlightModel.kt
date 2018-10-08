@@ -92,8 +92,9 @@ class FlightViewModel(
     }
 
     override fun writeToParcel(dest: Parcel, flags: Int) {
-        super.writeToParcel(dest, flags)
         dest.writeString(noOfDaysToFly)
+        super.writeToParcel(dest, flags)
+
     }
 
     companion object {

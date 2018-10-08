@@ -29,4 +29,5 @@
     <string name="pnr_label">PNR</string>
     <string name="pnr_value">Z1Y2X3</string>
     <string name="flight_image">Flight Image</string>
+    <string name="image">Image</string>
 </resources>

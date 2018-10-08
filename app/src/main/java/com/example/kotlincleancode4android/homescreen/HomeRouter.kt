@@ -4,6 +4,7 @@ import android.content.Intent
 import android.view.View
 import android.widget.AdapterView
 import com.example.kotlincleancode4android.CalendarUtil
+import com.example.kotlincleancode4android.boardingScreen.BoardingActivity
 import java.lang.ref.WeakReference
 import java.util.Calendar
 
@@ -23,17 +24,19 @@ class HomeRouter : HomeRouterInput, AdapterView.OnItemClickListener {
 
 
     override fun determineNextScreen(position: Int): Intent {
-        // Based on the position or someother data decide what is the next scene
+        // Based on the position or some other data decide what is the next scene
 
         val flight = activity?.get()?.listOfVMFlights?.get(position)
         val startingTime = CalendarUtil.getCalendar(flight?.startingTime)
 
-//        return if (isFutureFlight(startingTime)) {
-//            Intent(activity!!.get(), BoardingActivity::class.java)
-//        } else {
+        return if (isFutureFlight(startingTime)) {
+            Intent(activity!!.get(), BoardingActivity::class.java)
+        } else {
+            Intent()
+        }
 //            Intent(activity!!.get(), PastTripActivity::class.java)
 //        }
-        return Intent()
+//        return Intent()
     }
 
     override fun passDataToNextScene(position: Int, intent: Intent) {
