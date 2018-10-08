@@ -16,7 +16,7 @@ import org.robolectric.RobolectricTestRunner
 class HomeActivityUnitTest {
 
     @Test
-    fun HomeActivity_ShouldNOT_be_Null() {
+    fun homeActivity_ShouldNOT_be_Null() {
         // Given
         val activity = Robolectric.setupActivity(HomeActivity::class.java)
         // When
