@@ -3,7 +3,7 @@ package com.example.kotlincleancode4android
 import com.example.kotlincleancode4android.boardingScreen.BoardingActivity
 import com.example.kotlincleancode4android.homescreen.MainActivity
 import com.example.kotlincleancode4android.homescreen.HomeRouter
-import com.example.kotlincleancode4android.pastTripScreen.PastTripActivity
+import com.example.kotlincleancode4android.pastTripScreen.PastTripFragment
 import org.junit.Assert
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -103,8 +103,8 @@ class HomeRouterUnitTest {
         // Then
         val targetActivityName = intent.component.className
         Assert.assertEquals("When the past travel date is passed to HomeRouter"
-                + " Then next Intent should be PastTripActivity",
-                targetActivityName, PastTripActivity::class.java.name)
+                + " Then next Intent should be PastTripFragment",
+                targetActivityName, PastTripFragment::class.java.name)
     }
 
     companion object {

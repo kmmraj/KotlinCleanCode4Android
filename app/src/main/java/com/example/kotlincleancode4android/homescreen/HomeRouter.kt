@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment
 import android.view.View
 import android.widget.AdapterView
 import com.example.kotlincleancode4android.CalendarUtil
+import com.example.kotlincleancode4android.pastTripScreen.PastTripFragment
 import java.lang.ref.WeakReference
 import java.util.Calendar
 
@@ -34,8 +35,8 @@ class HomeRouter : HomeRouterInput, AdapterView.OnItemClickListener {
            // Intent(activity!!.get(), BoardingActivity::class.java)
             HomeFragment()
         } else {
-//            Intent(activity!!.get(), PastTripActivity::class.java)
-            HomeFragment()
+//            Intent(activity!!.get(), PastTripFragment::class.java)
+            PastTripFragment()
         }
     }
 
