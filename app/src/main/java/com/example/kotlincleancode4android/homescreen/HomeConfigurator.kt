@@ -8,27 +8,18 @@ import java.lang.ref.WeakReference
 
 object HomeConfigurator {
 
-    fun configure(activity: HomeActivity) {
+    fun configureFragment(fragment: HomeFragment) {
 
         val router = HomeRouter()
-        router.activity = WeakReference(activity)
+        router.fragment = WeakReference(fragment)
 
         val presenter = HomePresenter()
-        presenter.output = WeakReference(activity)
+        presenter.output = WeakReference(fragment)
 
         val interactor = HomeInteractor()
         interactor.output = presenter
 
-       // activity.output?.let {  }
-
-        activity.output = interactor
-
-//        if (activity.output == null) {
-//            activity.output = interactor
-//        }
-        activity.router = router
-//        if (activity.router == null) {
-//            activity.router = router
-//        }
+        fragment.output = interactor
+        fragment.router = router
     }
 }

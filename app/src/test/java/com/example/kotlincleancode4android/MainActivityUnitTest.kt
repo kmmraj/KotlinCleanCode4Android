@@ -1,6 +1,6 @@
 package com.example.kotlincleancode4android
 
-import com.example.kotlincleancode4android.homescreen.HomeActivity
+import com.example.kotlincleancode4android.homescreen.MainActivity
 import com.example.kotlincleancode4android.homescreen.HomeInteractorInput
 import com.example.kotlincleancode4android.homescreen.HomeRequest
 import org.junit.Assert
@@ -13,12 +13,12 @@ import org.robolectric.RobolectricTestRunner
  * Created by Mohanraj Karatadipalayam on 07/10/18.
  */
 @RunWith(RobolectricTestRunner::class)
-class HomeActivityUnitTest {
+class MainActivityUnitTest {
 
     @Test
     fun homeActivity_ShouldNOT_be_Null() {
         // Given
-        val activity = Robolectric.setupActivity(HomeActivity::class.java)
+        val activity = Robolectric.setupActivity(MainActivity::class.java)
         // When
 
         // Then
@@ -29,7 +29,7 @@ class HomeActivityUnitTest {
     fun onCreate_shouldCall_fetchHomeMetaData() {
         // Given
         val homeActivityOutputSpy = HomeActivityOutputSpy()
-        val homeActivity = Robolectric.setupActivity(HomeActivity::class.java)
+        val homeActivity = Robolectric.setupActivity(MainActivity::class.java)
         // It must have called the onCreate earlier,
         // we are injecting the mock and calling the fetchMetaData to test our condition
         homeActivity.output = homeActivityOutputSpy
@@ -45,7 +45,7 @@ class HomeActivityUnitTest {
     fun onCreate_Calls_fetchHomeMetaData_withCorrectData() {
         // Given
         val homeActivityOutputSpy = HomeActivityOutputSpy()
-        val homeActivity = Robolectric.setupActivity(HomeActivity::class.java)
+        val homeActivity = Robolectric.setupActivity(MainActivity::class.java)
         homeActivity.output = homeActivityOutputSpy
 
         // When

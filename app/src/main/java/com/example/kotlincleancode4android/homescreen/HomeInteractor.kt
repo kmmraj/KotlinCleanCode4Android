@@ -14,17 +14,11 @@ interface HomeInteractorInput {
 class HomeInteractor : HomeInteractorInput {
 
     var output: HomePresenterInput? = null
-
     var flightWorkerInput: FlightWorkerInput? = null
-
 
     fun retrieveFlightWorkerInput(): FlightWorkerInput {
         return flightWorkerInput ?: FlightWorker()
     }
-
-//    fun setFlightWorkerInput(flightWorkerInput: FlightWorkerInput) {
-//        this.flightWorkerInput = flightWorkerInput
-//    }
 
     override fun fetchHomeMetaData(request: HomeRequest) {
         Log.e(TAG, "In method fetchHomeMetaData")
@@ -40,7 +34,7 @@ class HomeInteractor : HomeInteractorInput {
             throw ArrayEmptyException("Empty Flight List")
         }
 
-        output!!.presentHomeMetaData(homeResponse)
+        output?.presentHomeMetaData(homeResponse)
     }
 
     companion object {

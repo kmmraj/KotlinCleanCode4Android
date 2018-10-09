@@ -15,7 +15,7 @@ interface HomePresenterInput {
 
 class HomePresenter : HomePresenterInput {
 
-    var output: WeakReference<HomeActivityInput>? = null
+    var output: WeakReference<HomeFragmentInput>? = null
     var currentTime: Calendar? = null
         get() = if (field == null) Calendar.getInstance() else field
 

@@ -1,5 +1,7 @@
 package com.example.kotlincleancode4android
 
+import android.support.v4.app.FragmentTransaction
+import android.support.v7.app.AppCompatActivity
 import java.util.Calendar
 import java.util.concurrent.TimeUnit
 
@@ -34,4 +36,10 @@ object CalendarUtil {
         // Log.e(TAG,"diff is  "+ daysDiff);
         return TimeUnit.MILLISECONDS.toDays(msDiff)
     }
+}
+
+inline fun AppCompatActivity.transact(action: FragmentTransaction.() -> Unit) {
+    supportFragmentManager.beginTransaction().apply {
+        action()
+    }.commit()
 }

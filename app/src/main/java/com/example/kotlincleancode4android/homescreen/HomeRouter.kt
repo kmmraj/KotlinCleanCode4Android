@@ -1,11 +1,11 @@
 package com.example.kotlincleancode4android.homescreen
 
-import android.content.Intent
+
+import android.os.Bundle
+import android.support.v4.app.Fragment
 import android.view.View
 import android.widget.AdapterView
 import com.example.kotlincleancode4android.CalendarUtil
-import com.example.kotlincleancode4android.boardingScreen.BoardingActivity
-import com.example.kotlincleancode4android.pastTripScreen.PastTripActivity
 import java.lang.ref.WeakReference
 import java.util.Calendar
 
@@ -14,40 +14,45 @@ import java.util.Calendar
  */
 
 internal interface HomeRouterInput {
-    fun determineNextScreen(position: Int): Intent
-    fun passDataToNextScene(position: Int, intent: Intent)
+    fun determineNextScreen(position: Int): Fragment
+    fun passDataToNextScene(position: Int, nextFragment: Fragment)
 }
 
 class HomeRouter : HomeRouterInput, AdapterView.OnItemClickListener {
-    var activity: WeakReference<HomeActivity>? = null
+    var fragment: WeakReference<HomeFragment>? = null
     var currentTime: Calendar? = null
         get() = if (field == null) Calendar.getInstance() else field
 
 
-    override fun determineNextScreen(position: Int): Intent {
+    override fun determineNextScreen(position: Int): Fragment {
         // Based on the position or some other data decide what is the next scene
 
-        val flight = activity?.get()?.listOfVMFlights?.get(position)
+        val flight = fragment?.get()?.listOfVMFlights?.get(position)
         val startingTime = CalendarUtil.getCalendar(flight?.startingTime)
 
         return if (isFutureFlight(startingTime)) {
-            Intent(activity!!.get(), BoardingActivity::class.java)
+           // Intent(activity!!.get(), BoardingActivity::class.java)
+            HomeFragment()
         } else {
-            Intent(activity!!.get(), PastTripActivity::class.java)
+//            Intent(activity!!.get(), PastTripActivity::class.java)
+            HomeFragment()
         }
     }
 
-    override fun passDataToNextScene(position: Int, intent: Intent) {
-        // Based on the position or someother data decide the data for the next scene
-        val flight = activity?.get()?.listOfVMFlights?.get(position)
-        intent.putExtra("flight", flight)
+    override fun passDataToNextScene(position: Int, nextFragment: Fragment) {
+        // Based on the position or some other data decide the data for the next scene
+        val flight = fragment?.get()?.listOfVMFlights?.get(position)
+        val args =  Bundle()
+        args.putParcelable("flight",flight)
+        nextFragment.arguments = args
     }
 
     override fun onItemClick(parent: AdapterView<*>, view: View, position: Int, id: Long) {
         // Log.e(TAG, "onItemClick() called with: parent = [" + parent + "], view = [" + view + "], position = [" + position + "], id = [" + id + "]");
-        val intent = determineNextScreen(position)
-        passDataToNextScene(position, intent)
-        activity?.get()?.startActivity(intent)
+        val nextFragment = determineNextScreen(position)
+        passDataToNextScene(position, nextFragment)
+        fragment?.get()?.homeActivityListener?.startPastTripFragment(nextFragment)
+        // TODO - Decide should we start the fragment from here or from the activity ?
     }
 
     private fun isFutureFlight(startingTime: Calendar): Boolean {

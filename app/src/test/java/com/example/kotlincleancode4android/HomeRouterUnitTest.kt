@@ -1,7 +1,7 @@
 package com.example.kotlincleancode4android
 
 import com.example.kotlincleancode4android.boardingScreen.BoardingActivity
-import com.example.kotlincleancode4android.homescreen.HomeActivity
+import com.example.kotlincleancode4android.homescreen.MainActivity
 import com.example.kotlincleancode4android.homescreen.HomeRouter
 import com.example.kotlincleancode4android.pastTripScreen.PastTripActivity
 import org.junit.Assert
@@ -43,7 +43,7 @@ class HomeRouterUnitTest {
         )
         flightList.add(flight2)
 
-        val homeActivity = Robolectric.setupActivity(HomeActivity::class.java)
+        val homeActivity = Robolectric.setupActivity(MainActivity::class.java)
         homeActivity.listOfVMFlights = flightList
         homeActivity.router = homeRouter
         homeRouter.activity = WeakReference(homeActivity)
@@ -88,7 +88,7 @@ class HomeRouterUnitTest {
         )
         flightList.add(flight2)
 
-        val homeActivity = Robolectric.setupActivity(HomeActivity::class.java)
+        val homeActivity = Robolectric.setupActivity(MainActivity::class.java)
         homeActivity.listOfVMFlights = flightList
         homeActivity.router = homeRouter
         homeRouter.activity = WeakReference(homeActivity)
