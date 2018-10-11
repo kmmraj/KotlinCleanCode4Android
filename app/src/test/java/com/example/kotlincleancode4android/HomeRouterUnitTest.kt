@@ -1,7 +1,8 @@
 package com.example.kotlincleancode4android
 
 import com.example.kotlincleancode4android.boardingScreen.BoardingActivity
-import com.example.kotlincleancode4android.homescreen.MainActivity
+import com.example.kotlincleancode4android.homescreen.HomeFragment
+import com.example.kotlincleancode4android.homescreen.MainFragment
 import com.example.kotlincleancode4android.homescreen.HomeRouter
 import com.example.kotlincleancode4android.pastTripScreen.PastTripFragment
 import org.junit.Assert
@@ -18,7 +19,7 @@ import java.util.*
 @RunWith(RobolectricTestRunner::class)
 class HomeRouterUnitTest {
 
-    @Test
+   @Test
     fun homeRouter_determineNextScreen_when_futureTripIs_Input() {
         // Given
         val homeRouter = HomeRouter()
@@ -43,23 +44,24 @@ class HomeRouterUnitTest {
         )
         flightList.add(flight2)
 
-        val homeActivity = Robolectric.setupActivity(MainActivity::class.java)
-        homeActivity.listOfVMFlights = flightList
-        homeActivity.router = homeRouter
-        homeRouter.activity = WeakReference(homeActivity)
+        val homeActivity = Robolectric.setupActivity(MainFragment::class.java)
+        val homeFragment = HomeFragment()
+        homeFragment.listOfVMFlights = flightList
+        homeFragment.router = homeRouter
+        homeRouter.fragment = WeakReference(homeFragment)
 
         val currentTime = Calendar.getInstance()
         currentTime.set(2017, 5, 30, 0, 0, 0)
         homeRouter.currentTime = currentTime
 
         // When - Future Trip is Input
-        val intent = homeRouter.determineNextScreen(0)
+        val fragment = homeRouter.determineNextScreen(0)
 
         // Then
-        val targetActivityName = intent.component?.className
+        val targetFragmentName = fragment.javaClass.name
         Assert.assertEquals("When the future travel date is passed to HomeRouter" +
-                " Then next Intent should be BoardingActivity",
-                targetActivityName,
+                " Then next Fragment should be BoardingFragment",
+                targetFragmentName,
                 BoardingActivity::class.java.name)
     }
 
@@ -88,23 +90,23 @@ class HomeRouterUnitTest {
         )
         flightList.add(flight2)
 
-        val homeActivity = Robolectric.setupActivity(MainActivity::class.java)
-        homeActivity.listOfVMFlights = flightList
-        homeActivity.router = homeRouter
-        homeRouter.activity = WeakReference(homeActivity)
+        val homeFragment = HomeFragment()
+        homeFragment.listOfVMFlights = flightList
+        homeFragment.router = homeRouter
+        homeRouter.fragment = WeakReference(homeFragment)
 
         val currentTime = Calendar.getInstance()
         currentTime.set(2017, 5, 30, 0, 0, 0)
         homeRouter.currentTime = currentTime
 
         // When - Past Trip is Input
-        val intent = homeRouter.determineNextScreen(1)
+        val fragment = homeRouter.determineNextScreen(1)
 
         // Then
-        val targetActivityName = intent.component.className
+        val targetFragmentName = fragment.javaClass.name
         Assert.assertEquals("When the past travel date is passed to HomeRouter"
                 + " Then next Intent should be PastTripFragment",
-                targetActivityName, PastTripFragment::class.java.name)
+                targetFragmentName, PastTripFragment::class.java.name)
     }
 
     companion object {

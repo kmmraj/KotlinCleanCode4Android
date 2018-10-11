@@ -25,7 +25,8 @@ class HomeInteractorUnitTest {
         homeInteractor.fetchHomeMetaData(homeRequest)
 
         // Then
-        Assert.assertTrue("When the valid input is passed to HomeInteractor " + "Then presentHomeMetaData should be called",
+        Assert.assertTrue("When the valid input is passed to HomeInteractor "
+                + "Then presentHomeMetaData should be called",
                 homePresenterInputSpy.presentHomeMetaDataIsCalled)
     }
 
@@ -45,7 +46,8 @@ class HomeInteractorUnitTest {
         homeInteractor.fetchHomeMetaData(homeRequest)
 
         // Then
-        Assert.assertTrue("When the input is passed to HomeInteractor is FutureTrip" + "Then getFutureFlights should be called in Worker",
+        Assert.assertTrue("When the input is passed to HomeInteractor is FutureTrip"
+                + "Then getFutureFlights should be called in Worker",
                 flightWorkerInputSpy.isGetFutureFlightsMethodCalled)
     }
 
@@ -65,7 +67,8 @@ class HomeInteractorUnitTest {
         homeInteractor.fetchHomeMetaData(homeRequest)
 
         // Then
-        Assert.assertTrue("When the input is passed to HomeInteractor is FutureTrip" + "Then getFutureFlights should be called in Worker",
+        Assert.assertTrue("When the input is passed to HomeInteractor is FutureTrip"
+                + "Then getFutureFlights should be called in Worker",
                 flightWorkerInputSpy.isGetPastFlightsMethodCalled)
     }
 

@@ -26,7 +26,7 @@ class HomeFragment : Fragment(), HomeFragmentInput {
     var listOfVMFlights: ArrayList<FlightViewModel> = arrayListOf()
     lateinit var output: HomeInteractorInput
     lateinit var router: HomeRouter
-    lateinit var homeActivityListener: HomeActivityListener
+    lateinit var homeFragmentListener: HomeFragmentListener
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -35,7 +35,7 @@ class HomeFragment : Fragment(), HomeFragmentInput {
         val view =  inflater.inflate(R.layout.fragment_home, container, false)
 
         HomeConfigurator.configureFragment(this)
-        fetchMetaData()
+        fetchData()
         createFlightListView(view)
 
         return view
@@ -46,13 +46,13 @@ class HomeFragment : Fragment(), HomeFragmentInput {
         // This makes sure that the container activity has implemented
         // the callback interface. If not, it throws an exception
         try {
-            homeActivityListener = activity as HomeActivityListener
+            homeFragmentListener = activity as HomeFragmentListener
         } catch (e: ClassCastException) {
-            throw ClassCastException(activity!!.toString() + " must implement HomeActivityListener")
+            throw ClassCastException(activity!!.toString() + " must implement HomeFragmentListener")
         }
     }
 
-    fun fetchMetaData() {
+    fun fetchData() {
         // create Request and set the needed input
         val homeRequest = HomeRequest()
         homeRequest.isFutureTrips = true
@@ -68,11 +68,15 @@ class HomeFragment : Fragment(), HomeFragmentInput {
     }
 
     override fun displayHomeMetaData(viewModel: HomeViewModel) {
-        Log.e(MainActivity.TAG, "displayHomeMetaData() called with: viewModel = [$viewModel]")
+        Log.d(HomeFragment.TAG, "displayHomeMetaData() called with: viewModel = [$viewModel]")
         listOfVMFlights = viewModel.listOfFlights!!
+    }
+
+    companion object {
+        const val TAG = "HomeFragment"
     }
 }
 
-interface HomeActivityListener{
+interface HomeFragmentListener{
     fun startPastTripFragment(fragment: Fragment)
 }

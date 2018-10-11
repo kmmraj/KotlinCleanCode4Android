@@ -3,6 +3,7 @@ package com.example.kotlincleancode4android.homescreen
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import com.example.kotlincleancode4android.CalendarUtil
@@ -49,10 +50,10 @@ class HomeRouter : HomeRouterInput, AdapterView.OnItemClickListener {
     }
 
     override fun onItemClick(parent: AdapterView<*>, view: View, position: Int, id: Long) {
-        // Log.e(TAG, "onItemClick() called with: parent = [" + parent + "], view = [" + view + "], position = [" + position + "], id = [" + id + "]");
+        Log.d(TAG, "onItemClick() called with: parent = [$parent], view = [$view], position = [$position], id = [$id]");
         val nextFragment = determineNextScreen(position)
         passDataToNextScene(position, nextFragment)
-        fragment?.get()?.homeActivityListener?.startPastTripFragment(nextFragment)
+        fragment?.get()?.homeFragmentListener?.startPastTripFragment(nextFragment)
         // TODO - Decide should we start the fragment from here or from the activity ?
     }
 

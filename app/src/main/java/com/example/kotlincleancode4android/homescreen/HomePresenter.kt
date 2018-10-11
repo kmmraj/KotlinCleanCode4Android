@@ -20,7 +20,7 @@ class HomePresenter : HomePresenterInput {
         get() = if (field == null) Calendar.getInstance() else field
 
     override fun presentHomeMetaData(response: HomeResponse) {
-        // Log.e(TAG, "presentHomeMetaData() called with: response = [" + response + "]");
+         Log.d(TAG, "presentHomeMetaData() called with: response = [$response]");
         // Do your decoration or filtering here
         val homeViewModel = HomeViewModel()
         homeViewModel.listOfFlights = ArrayList()
@@ -74,14 +74,13 @@ class HomePresenter : HomePresenterInput {
     }
 
     private fun getDaysDiff(startTime: Long, endTime: Long): Long {
-        val msDiff: Long
-        if (endTime > startTime) {
-            msDiff = endTime - startTime
+        val msDiff: Long = if (endTime > startTime) {
+            endTime - startTime
         } else {
-            msDiff = startTime - endTime
+            startTime - endTime
         }
         val daysDiff = TimeUnit.MILLISECONDS.toDays(msDiff)
-        Log.e(TAG, "diff is  $daysDiff")
+        Log.d(TAG, "diff is  $daysDiff")
         return daysDiff
     }
 

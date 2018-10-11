@@ -15,19 +15,16 @@ class HomeInteractor : HomeInteractorInput {
 
     var output: HomePresenterInput? = null
     var flightWorkerInput: FlightWorkerInput? = null
+        get() { return field ?: FlightWorker()}
 
-    fun retrieveFlightWorkerInput(): FlightWorkerInput {
-        return flightWorkerInput ?: FlightWorker()
-    }
 
     override fun fetchHomeMetaData(request: HomeRequest) {
-        Log.e(TAG, "In method fetchHomeMetaData")
-        flightWorkerInput = retrieveFlightWorkerInput()
+        Log.d(TAG, "In method fetchHomeMetaData")
         val homeResponse = HomeResponse()
         if (request.isFutureTrips) {
-            homeResponse.listOfFlights = flightWorkerInput!!.futureFlights
+            homeResponse.listOfFlights = flightWorkerInput?.futureFlights
         } else {
-            homeResponse.listOfFlights = flightWorkerInput!!.pastFlights
+            homeResponse.listOfFlights = flightWorkerInput?.pastFlights
         }
         //TODO : Add failure case here
         if (null == homeResponse.listOfFlights || homeResponse.listOfFlights!!.isEmpty()) {

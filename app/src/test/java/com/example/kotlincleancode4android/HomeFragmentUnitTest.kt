@@ -1,6 +1,7 @@
 package com.example.kotlincleancode4android
 
-import com.example.kotlincleancode4android.homescreen.MainActivity
+import com.example.kotlincleancode4android.homescreen.HomeFragment
+import com.example.kotlincleancode4android.homescreen.MainFragment
 import com.example.kotlincleancode4android.homescreen.HomeInteractorInput
 import com.example.kotlincleancode4android.homescreen.HomeRequest
 import org.junit.Assert
@@ -13,12 +14,12 @@ import org.robolectric.RobolectricTestRunner
  * Created by Mohanraj Karatadipalayam on 07/10/18.
  */
 @RunWith(RobolectricTestRunner::class)
-class MainActivityUnitTest {
+class HomeFragmentUnitTest {
 
     @Test
     fun homeActivity_ShouldNOT_be_Null() {
         // Given
-        val activity = Robolectric.setupActivity(MainActivity::class.java)
+        val activity = Robolectric.setupActivity(MainFragment::class.java)
         // When
 
         // Then
@@ -28,14 +29,16 @@ class MainActivityUnitTest {
     @Test
     fun onCreate_shouldCall_fetchHomeMetaData() {
         // Given
-        val homeActivityOutputSpy = HomeActivityOutputSpy()
-        val homeActivity = Robolectric.setupActivity(MainActivity::class.java)
+        val homeActivityOutputSpy = HomeFragmentOutputSpy()
+       // val homeActivity = Robolectric.setupActivity(MainFragment::class.java)
+
         // It must have called the onCreate earlier,
-        // we are injecting the mock and calling the fetchMetaData to test our condition
-        homeActivity.output = homeActivityOutputSpy
+        // we are injecting the mock and calling the fetchData to test our condition
+        val homeFragment = HomeFragment()
+        homeFragment.output = homeActivityOutputSpy
 
         // When
-        homeActivity.fetchMetaData()
+        homeFragment.fetchData()
 
         // Then
         Assert.assertTrue(homeActivityOutputSpy.fetchHomeMetaDataIsCalled)
@@ -44,19 +47,19 @@ class MainActivityUnitTest {
     @Test
     fun onCreate_Calls_fetchHomeMetaData_withCorrectData() {
         // Given
-        val homeActivityOutputSpy = HomeActivityOutputSpy()
-        val homeActivity = Robolectric.setupActivity(MainActivity::class.java)
-        homeActivity.output = homeActivityOutputSpy
+        val homeActivityOutputSpy = HomeFragmentOutputSpy()
+        val homeFragment = HomeFragment()
+        homeFragment.output = homeActivityOutputSpy
 
         // When
-        homeActivity.fetchMetaData()
+        homeFragment.fetchData()
 
         // Then
-        Assert.assertNotNull(homeActivity)
+        Assert.assertNotNull(homeFragment)
         Assert.assertTrue(homeActivityOutputSpy.homeRequestCopy.isFutureTrips)
     }
 
-    private inner class HomeActivityOutputSpy : HomeInteractorInput {
+    private inner class HomeFragmentOutputSpy : HomeInteractorInput {
 
         var fetchHomeMetaDataIsCalled = false
         lateinit var homeRequestCopy: HomeRequest
