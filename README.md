@@ -39,6 +39,6 @@ This project ideas are n't new in any way. Credit has to be given to the followi
 [2]: http://clean-swift.com
 [3]: https://github.com/googlesamples/android-testing
 [4]: https://riggaroo.co.za/custom-file-templates-android-studio/
-[5]: https://github.com/kmmraj/androidcleancode-generator
+[5]: https://github.com/kmmraj/kt-clean-code4Android-generator
 [6]: ./LICENSE
-[7]: https://medium.com/@kmmraj/android-clean-code-part-1-c66da6551d1
+[7]: https://medium.com/@kmmraj/kotlin-clean-code-4-android-part-1-3d01703ebea8
