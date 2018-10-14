@@ -1,7 +1,7 @@
 package com.example.kotlincleancode4android
 
 import com.example.kotlincleancode4android.homescreen.HomeFragment
-import com.example.kotlincleancode4android.homescreen.MainFragment
+import com.example.kotlincleancode4android.homescreen.MainActivity
 import com.example.kotlincleancode4android.homescreen.HomeInteractorInput
 import com.example.kotlincleancode4android.homescreen.HomeRequest
 import org.junit.Assert
@@ -17,9 +17,9 @@ import org.robolectric.RobolectricTestRunner
 class HomeFragmentUnitTest {
 
     @Test
-    fun homeActivity_ShouldNOT_be_Null() {
+    fun mainActivity_ShouldNOT_be_Null() {
         // Given
-        val activity = Robolectric.setupActivity(MainFragment::class.java)
+        val activity = Robolectric.setupActivity(MainActivity::class.java)
         // When
 
         // Then
@@ -27,45 +27,54 @@ class HomeFragmentUnitTest {
     }
 
     @Test
-    fun onCreate_shouldCall_fetchHomeMetaData() {
+    fun fragment_ShouldNOT_be_Null() {
         // Given
-        val homeActivityOutputSpy = HomeFragmentOutputSpy()
-       // val homeActivity = Robolectric.setupActivity(MainFragment::class.java)
+        val fragment = HomeFragment()
+        // When
 
-        // It must have called the onCreate earlier,
+        // Then
+        Assert.assertNotNull(fragment)
+    }
+
+    @Test
+    fun onCreateView_shouldCall_fetchHomeData() {
+        // Given
+        val fragmentOutputSpy = HomeFragmentOutputSpy()
+
+        // It must have called the onCreateView earlier,
         // we are injecting the mock and calling the fetchData to test our condition
         val homeFragment = HomeFragment()
-        homeFragment.output = homeActivityOutputSpy
+        homeFragment.output = fragmentOutputSpy
 
         // When
         homeFragment.fetchData()
 
         // Then
-        Assert.assertTrue(homeActivityOutputSpy.fetchHomeMetaDataIsCalled)
+        Assert.assertTrue(fragmentOutputSpy.fetchHomeDataIsCalled)
     }
 
     @Test
-    fun onCreate_Calls_fetchHomeMetaData_withCorrectData() {
+    fun onCreateView_Calls_fetchHomeMetaData_withCorrectData() {
         // Given
-        val homeActivityOutputSpy = HomeFragmentOutputSpy()
+        val fragmentOutputSpy = HomeFragmentOutputSpy()
         val homeFragment = HomeFragment()
-        homeFragment.output = homeActivityOutputSpy
+        homeFragment.output = fragmentOutputSpy
 
         // When
         homeFragment.fetchData()
 
         // Then
         Assert.assertNotNull(homeFragment)
-        Assert.assertTrue(homeActivityOutputSpy.homeRequestCopy.isFutureTrips)
+        Assert.assertTrue(fragmentOutputSpy.homeRequestCopy.isFutureTrips)
     }
 
     private inner class HomeFragmentOutputSpy : HomeInteractorInput {
 
-        var fetchHomeMetaDataIsCalled = false
+        var fetchHomeDataIsCalled = false
         lateinit var homeRequestCopy: HomeRequest
 
-        override fun fetchHomeMetaData(request: HomeRequest) {
-            fetchHomeMetaDataIsCalled = true
+        override fun fetchHomeData(request: HomeRequest) {
+            fetchHomeDataIsCalled = true
             homeRequestCopy = request
         }
     }

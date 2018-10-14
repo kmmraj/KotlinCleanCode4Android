@@ -57,7 +57,7 @@ class HomeFragment : Fragment(), HomeFragmentInput {
         val homeRequest = HomeRequest()
         homeRequest.isFutureTrips = true
         // Call the output to fetch the data
-        output.fetchHomeMetaData(homeRequest)
+        output.fetchHomeData(homeRequest)
     }
 
     private fun createFlightListView(view: View) {

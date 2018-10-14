@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:clickable="true"
-    tools:context=".homescreen.MainFragment">
+    tools:context=".homescreen.MainActivity">
 
     <LinearLayout
         android:orientation="vertical"

@@ -22,7 +22,7 @@ class HomeInteractorUnitTest {
         val homePresenterInputSpy = HomePresenterInputSpy()
         homeInteractor.output = homePresenterInputSpy
         // When
-        homeInteractor.fetchHomeMetaData(homeRequest)
+        homeInteractor.fetchHomeData(homeRequest)
 
         // Then
         Assert.assertTrue("When the valid input is passed to HomeInteractor "
@@ -43,7 +43,7 @@ class HomeInteractorUnitTest {
         homeInteractor.flightWorkerInput = flightWorkerInputSpy
 
         // When
-        homeInteractor.fetchHomeMetaData(homeRequest)
+        homeInteractor.fetchHomeData(homeRequest)
 
         // Then
         Assert.assertTrue("When the input is passed to HomeInteractor is FutureTrip"
@@ -64,7 +64,7 @@ class HomeInteractorUnitTest {
         homeInteractor.flightWorkerInput = flightWorkerInputSpy
 
         // When
-        homeInteractor.fetchHomeMetaData(homeRequest)
+        homeInteractor.fetchHomeData(homeRequest)
 
         // Then
         Assert.assertTrue("When the input is passed to HomeInteractor is FutureTrip"
@@ -85,7 +85,7 @@ class HomeInteractorUnitTest {
         homeInteractor.flightWorkerInput = flightWorkerInputReturnNullSpy
 
         // When
-        homeInteractor.fetchHomeMetaData(homeRequest)
+        homeInteractor.fetchHomeData(homeRequest)
 
         // Then
         // Check for ArrayEmptyException -- See this method Annotation

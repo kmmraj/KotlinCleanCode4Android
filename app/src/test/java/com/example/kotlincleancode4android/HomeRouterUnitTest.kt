@@ -2,7 +2,7 @@ package com.example.kotlincleancode4android
 
 import com.example.kotlincleancode4android.boardingScreen.BoardingActivity
 import com.example.kotlincleancode4android.homescreen.HomeFragment
-import com.example.kotlincleancode4android.homescreen.MainFragment
+import com.example.kotlincleancode4android.homescreen.MainActivity
 import com.example.kotlincleancode4android.homescreen.HomeRouter
 import com.example.kotlincleancode4android.pastTripScreen.PastTripFragment
 import org.junit.Assert
@@ -44,7 +44,7 @@ class HomeRouterUnitTest {
         )
         flightList.add(flight2)
 
-        val homeActivity = Robolectric.setupActivity(MainFragment::class.java)
+        val homeActivity = Robolectric.setupActivity(MainActivity::class.java)
         val homeFragment = HomeFragment()
         homeFragment.listOfVMFlights = flightList
         homeFragment.router = homeRouter

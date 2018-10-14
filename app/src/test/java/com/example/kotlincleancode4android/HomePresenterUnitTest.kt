@@ -1,5 +1,6 @@
 package com.example.kotlincleancode4android
 
+//import android.util.Log
 import android.util.Log
 import com.example.kotlincleancode4android.homescreen.*
 import org.junit.Assert
@@ -117,7 +118,7 @@ class HomePresenterUnitTest {
         val currentTime = Calendar.getInstance()
         // currentTime.set(2017,5,30,0,0,0);
         currentTime.set(2017, 5, 30)
-        Log.e(TAG, "verify_HomePresenter_getDaysDiff_isCalculatedCorrectly_ForPastTrips: "
+        Log.d(TAG, "verify_HomePresenter_getDaysDiff_isCalculatedCorrectly_ForPastTrips: "
                 + currentTime.toString())
         homePresenter.currentTime = currentTime
         homePresenter.presentHomeMetaData(homeResponse)

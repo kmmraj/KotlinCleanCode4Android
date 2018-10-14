@@ -8,7 +8,7 @@ import com.example.kotlincleancode4android.ArrayEmptyException
  */
 
 interface HomeInteractorInput {
-    fun fetchHomeMetaData(request: HomeRequest)
+    fun fetchHomeData(request: HomeRequest)
 }
 
 class HomeInteractor : HomeInteractorInput {
@@ -18,8 +18,8 @@ class HomeInteractor : HomeInteractorInput {
         get() { return field ?: FlightWorker()}
 
 
-    override fun fetchHomeMetaData(request: HomeRequest) {
-        Log.d(TAG, "In method fetchHomeMetaData")
+    override fun fetchHomeData(request: HomeRequest) {
+        Log.d(TAG, "In method fetchHomeData")
         val homeResponse = HomeResponse()
         if (request.isFutureTrips) {
             homeResponse.listOfFlights = flightWorkerInput?.futureFlights

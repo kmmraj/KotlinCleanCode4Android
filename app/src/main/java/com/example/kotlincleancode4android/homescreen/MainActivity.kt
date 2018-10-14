@@ -11,7 +11,7 @@ import com.example.kotlincleancode4android.R
 import com.example.kotlincleancode4android.transact
 
 
-class MainFragment : AppCompatActivity(),HomeFragmentListener {
+class MainActivity : AppCompatActivity(),HomeFragmentListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +32,6 @@ class MainFragment : AppCompatActivity(),HomeFragmentListener {
     }
 
     companion object {
-        const val TAG = "MainFragment"
+        const val TAG = "MainActivity"
     }
 }
