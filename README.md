@@ -10,6 +10,7 @@
 ## Quick Start
 1. Clone and open in Android Studio
 2. It should work with out any issues
+3. When running the unit test cases choose the debug variant `unitTest`, **it will not work with `debug` or `release` variants**
 
 
 ## Whats Next ?

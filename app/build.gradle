@@ -30,14 +30,14 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            buildConfigField 'boolean', 'memoryTest', 'false'
+            buildConfigField 'boolean', 'memoryTest', 'true'
         }
         debug {
-            buildConfigField 'boolean', 'memoryTest', 'false'
+            buildConfigField 'boolean', 'memoryTest', 'true'
         }
 
-        memoryTest {
-            buildConfigField 'boolean', 'memoryTest', 'true'
+        unitTest {
+            buildConfigField 'boolean', 'memoryTest', 'false'
         }
     }
 

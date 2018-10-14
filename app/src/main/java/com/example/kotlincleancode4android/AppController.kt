@@ -10,7 +10,7 @@ class AppController: Application() {
     override fun onCreate() {
         super.onCreate()
         // TODO - Create a debugTest build variant
-        if(BuildConfig.memoryTest == false) {
+        if(BuildConfig.memoryTest) {
             if (LeakCanary.isInAnalyzerProcess(this)) {
                 // This process is dedicated to LeakCanary for heap analysis.
                 // You should not init your app in this process.
